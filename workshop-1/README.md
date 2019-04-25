@@ -231,8 +231,7 @@ At this point, the Mythical Mysfits website should be available at the static si
 
 Please run this command to generate SSH Key in Cloud9. This key will be used on the worker node instances to allow ssh access if necessary.
 
-```sh
-bash
+```bash
 ssh-keygen
 ```
 
