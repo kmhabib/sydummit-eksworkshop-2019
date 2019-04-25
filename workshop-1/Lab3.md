@@ -34,7 +34,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
 
     This provides an endpoint that can still manage persistence to DynamoDB, but omits the "business logic" (okay, in this case it's just a print statement, but in real life it could involve permissions checks or other nontrivial processing) handled by the `process_like_request` function.
 
-2. With this new functionality added to the monolith, rebuild the monolith docker image with a new tag, such as `nolike`, and push it to ECR just as before (It is a best practice to avoid the `latest` tag, which can be ambiguous. Instead choose a unique, descriptive name, or even better user a Git SHA and/or build ID):
+2. With this new functionality added to the monolith, rebuild the monolith docker image with a new tag, such as `nolike`, and push it to ECR just as before (It is a best practice to avoid the `latest` tag (which we used in the last lab), which can be ambiguous. Instead choose a unique, descriptive name, or even better user a Git SHA and/or build ID):
 
     <pre>
     $ cd app/monolith-service
@@ -42,8 +42,8 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
     $ docker tag monolith-service:nolike <b><i>ECR_REPOSITORY_URI</i></b>:nolike
     $ docker push <b><i>ECR_REPOSITORY_URI</i></b>:nolike
     </pre>
-
-3. Now, build the like service and push it to ECR.
+Note: you can delete the image that you pushed with the ":latest" tag from the last lab to avoid confusion. 
+3. Now, build the like service and push it to ECR. Like service is located in the folder `/home/ec2-user/environment/sydummit-eksworkshop-2019/workshop-1/app/like-service`. Dockerfile for "like-service" has already been created for you, you don't need to edit it. Now aake sure you get the repo name with "like" in it. For example, ours is `514700858447.dkr.ecr.us-west-2.amazonaws.com/mythic-like-cd4hx063h3aq`. you will need this once you build the image and then have to push it to the ECR repo which will store the "like" service docker image. 
 
     To find the like-service ECR repo URI, navigate to [Repositories](https://console.aws.amazon.com/ecs/home#/repositories) in the ECS dashboard, and find the repo named like <code><b><i>STACK_NAME</i></b>-like-XXX</code>.  Click on the like-service repository and copy the repository URI.
 
