@@ -1,0 +1,5 @@
+{
+  "Cloud9Env": "https://us-west-2.console.aws.amazon.com/cloud9/ide/25127cdec11141d1b7c8c23801566556?region=us-west-2",
+  "DynamoTable": "Table-mythical-mysfits-eks",
+  "SiteBucket": "mythical-mysfits-eks-mythicalbucket-6b9pvvt40bqj"
+}

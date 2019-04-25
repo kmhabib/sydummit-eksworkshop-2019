@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mythical-mysfits-like
+  labels:
+    app: mythical-mysfits-like
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mythical-mysfits-like
+  template:
+    metadata:
+      labels:
+        app: mythical-mysfits-like
+    spec:
+      containers:
+        - name: mythical-mysfits-like
+          image: "PUT_YOUR_LIKE_IMAGE_ECR_ARN"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: DDB_TABLE_NAME
+              value: PUT_YOUR_DYNAMODB_TABLENAME
+            - name: AWS_DEFAULT_REGION
+              value: us-west-2
+            - name: MONOLITH_URL
+              value: PUT_THE_DNS_NAME_OF_YOUR_ALB
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mythical-mysfits-like
+spec:
+  type: NodePort
+  selector:
+    app: mythical-mysfits-like
+  ports:
+   -  protocol: TCP
+      port: 80
+      targetPort: 80

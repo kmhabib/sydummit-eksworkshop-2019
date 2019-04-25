@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mythical-mysfits-eks
+  labels:
+    app: mythical-mysfits-eks
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mythical-mysfits-eks
+  template:
+    metadata:
+      labels:
+        app: mythical-mysfits-eks
+    spec:
+      containers:
+        - name: mythical-mysfits-eks
+          image: PUT_YOUR_MONOLITHIC_IMAGE_ECR_URI
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: DDB_TABLE_NAME
+              value: REPLACE_YOUR_DDB_TABLENAME
+            - name: AWS_DEFAULT_REGION
+              value: us-west-2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mythical-mysfits-eks
+spec:
+  type: LoadBalancer
+  selector:
+    app: mythical-mysfits-eks
+  ports:
+   -  protocol: TCP
+      port: 80
+      targetPort: 80 
