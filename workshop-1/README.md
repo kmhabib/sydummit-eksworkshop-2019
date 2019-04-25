@@ -515,12 +515,14 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     Use the [docker run](https://docs.docker.com/engine/reference/run/) command to run your image; the -p flag is used to map the host listening port to the container listening port.
     You can get the name of the DDB_TABLE_NAME by issuing the following command (output on my ide is below):
 
-    `aws dynamodb list-tables
+    ```sh
+    $ aws dynamodb list-tables
     {
         "TableNames": [
             "Table-mythical-mysfits-eks"
         ]
-    }`
+    }
+    ```
 
     ```sh
     $ docker run -p 8000:80 -e AWS_DEFAULT_REGION=us-west-2 -e DDB_TABLE_NAME=*TABLE_NAME* monolith-service
@@ -573,7 +575,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     You should see monolith running in the list. Now repeat the same curl command as before, ensuring you see the same list of Mysfits. You can check the logs again by running [docker logs](https://docs.docker.com/engine/reference/commandline/ps/) (it takes a container name or id fragment as an argument).
 
     ```sh
-    $ docker logs <b><i>CONTAINER_ID</i></b>
+    $ docker logs *CONTAINER_ID*
     ```
 
     Here's **sample** output from the above commands:
@@ -618,8 +620,8 @@ aws ecr describe-repositories | jq '.repositories[1].repositoryUri'
 Tag and push your container image to the mono repository.
 
     
-    $ docker tag monolith-service:latest <b><i>ECR_REPOSITORY_URI</i></b>:latest
-    $ docker push <b><i>ECR_REPOSITORY_URI</i></b>:latest
+    $ docker tag monolith-service:latest *<ECR_REPOSITORY_URI>*:latest
+    $ docker push *<ECR_REPOSITORY_URI>*:latest
 
 When you issue the push command, Docker pushes the layers up to ECR.
 
