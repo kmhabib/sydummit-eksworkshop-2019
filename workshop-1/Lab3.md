@@ -58,7 +58,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
 
 4. Now that we have broken our monolith into a microservice, consisting of "nolike" and "like" code, we'll now deploy these as two separate services on our EKS cluster using the ALB Ingres. Navigate to `/home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro` folder.  Open the `nolikeservice-app.yaml` file.  Repeat steps 1-4 from [*Lab 2*](Lab2.adoc).
 
-5. Replace the image ENV variable in the `nolikeservice-app.yaml` with the ECR URI for the "nolike" version of the container image that you just pushed. Then, replace the `DDB_TABLE_NAME` value with your DynamoDB table name.  Update the monolith service to use this revision. ![Get the nolike service](images/05-ecr-nolike.png)
+5. Replace the image ENV variable in the `nolikeservice-app.yaml` with the ECR URI for the "nolike" version of the container image that you just pushed. Then, replace the `DDB_TABLE_NAME` value with your DynamoDB table name.  Update the monolith service to use this revision. ![Get the nolike service](images/05-ecr-nolike.png) *Note: In the image above, we still have the :latest image in our ECR repo, you should have deleted this already and so won't see it in your ECR mono repo*
 
 6. Before we deploy this microservice, we'll go into the details of setting up the [ALB Ingress Controller](https://aws.amazon.com/blogs/opensource/kubernetes-ingress-aws-alb-ingress-controller/). 
 
