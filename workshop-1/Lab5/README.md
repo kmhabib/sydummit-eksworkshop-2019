@@ -56,7 +56,7 @@ Click on one of the **Deploy to AWS** icons below to region to stand up the core
 
 | Region | Launch Template |
 | ------------ | ------------- | 
-**Oregon** (us-west-2) | [![Launch Mythical Mysfits Stack into Oregon with CloudFormation](../images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=eksworkshop-codepipeline&templateURL=https://s3-us-west-2.amazonaws.com/cf-templates-z37cb1hiurgy-us-west-2/codepipeline.yaml)  
+**Oregon** (us-west-2) | [![Launch Mythical Mysfits Stack into Oregon with CloudFormation](../images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=eksworkshop-codepipeline&templateURL=https://s3-us-west-2.amazonaws.com/syd-eksworkshop-2019/codepipeline.yml)  
 
 
 Enter your Github username and personal access token you create in the previous step. 
