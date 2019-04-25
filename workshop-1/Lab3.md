@@ -81,7 +81,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
        - Attach policy “ingressController-iam-policy.”
     4. Deploy the RBAC Roles and RoleBinding needed by AWS ALB ingress controller:
        ```kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.0.0/docs/examples/rbac-role.yaml```
-    5. Modify the *alb-ingress-controller.yaml* file in the **Kubernetes/micro** folder and edit the cluster name to your cluster name (that you recorded in Lab0 when setting up EKS cluster)
+    5. Modify the *alb-ingress-controller.yaml* file in the **/home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro** folder and edit the cluster name to your cluster name (that you recorded in Lab0 when setting up EKS cluster, we called our cluster *mythicalmysfits*)
     6. Deploy the AWS ALB Ingress controller YAML:
        ```kubectl apply -f alb-ingress-controller.yaml```
     7. Verify that the deployment was successful and the controller started. 
