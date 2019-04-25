@@ -34,7 +34,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
 
     This provides an endpoint that can still manage persistence to DynamoDB, but omits the "business logic" (okay, in this case it's just a print statement, but in real life it could involve permissions checks or other nontrivial processing) handled by the `process_like_request` function.
 
-2. With this new functionality added to the monolith, rebuild the monolith docker image with a new tag, such as `nolike`, and push it to ECR just as before (It is a best practice to avoid the `latest` tag, [yes we were BAD in the last lab :)] which can be ambiguous. Instead choose a unique, descriptive name, or even better user a Git SHA and/or build ID). (Note: you can delete the image that you pushed with the ":latest" tag from the last lab to avoid confusion):
+2. With this new functionality added to the monolith, rebuild the monolith docker image with a new tag, such as `nolike`, and push it to ECR just as before *Note: It is a best practice to avoid the `latest` tag, [yes we were BAD in the last lab :)] which can be ambiguous. Instead choose a unique, descriptive name, or even better user a Git SHA and/or build ID.* *Note Again: you can delete the image that you pushed with the ":latest" tag from the last lab to avoid confusion*:
 
     <pre>
     $ cd app/monolith-service
