@@ -42,6 +42,15 @@ We are now ready to check that logs are arriving in CloudWatch Logs.
 
 Select the region that is mentioned in `fluentd.yml` to browse the Cloudwatch Log Group if required.
 
+**CLEANUP REQUEST: PLEASE you MUST issue these commands whether you plan to continue to the next lab or finish, otherwise our account cleanup scripts won't work.**
+Issue the following commands:
+```
+kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/workshop-1/Lab4/fluentd.yml
+kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro/likeservice-app.yaml 
+kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro/nolikeservice-app.yaml
+kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro/mythical-ingress.yaml 
+```
+
 ### Checkpoint:
 Congratulations, you've successfully rolled out the like microservice from the monolith and observed the logs in CloudWatch.  If you have time, try to do the CI/CD lab by going to this link: [Lab 5](../Lab5/README.md). Otherwise, please remember to follow the steps  in the **[Workshop Cleanup](../README.md#workshop-cleanup)** to make sure all assets created during the workshop are removed so you do not see unexpected charges after today.
 
