@@ -56,7 +56,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
     $ docker push <b><i>ECR_REPOSITORY_URI</i></b>:like
     </pre>
 
-4. Navigate to Kubernetes/micro folder `/home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro`.  Open the `nolikeservice-app.yaml` file.  Repeat steps 1-4 from [*Lab 2*](Lab2.adoc).
+4. Now that we have broken our monolith into a microservice, consisting of "nolike" and "like" code, we'll now deploy these as two separate services on our EKS cluster using the ALB Ingres. Navigate to Kubernetes/micro folder `/home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro`.  Open the `nolikeservice-app.yaml` file.  Repeat steps 1-4 from [*Lab 2*](Lab2.adoc).
 
 5. Replace the image ENV variable in the `nolikeservice-app.yaml` with the ECR ARN for the "nolike" version of the container image. Then, replace the `DDB_TABLE_NAME` value with your DynamoDB table name.  Update the monolith service to use this revision.
 
