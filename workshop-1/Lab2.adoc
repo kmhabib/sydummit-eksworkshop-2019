@@ -191,9 +191,9 @@ curl -m3 -v $ELB
 ....
 +
 
-13. if you see the text saying, *nothing to see here, try /mysfits*, then your pod/container is up and running. Do a curl again and append /mysfits after the previous curl command. You should see the output from the DynamoDB table. 
+13. if you see the text saying, *nothing to see here, try /mysfits*, then your pod/container is up and running. Do a curl again and append /mysfits after the previous curl command (`curl -m3 -v $ELB/mysfits`). You should see the output from the DynamoDB table. 
 
-14. Navigate to *cd /home/ec2-user/environment/containers-sydsummit-eks-workshop-2019/amazon-ecs-mythicalmysfits-workshop/workshop-1/web* 
+14. Navigate to *cd ~/environment/sydummit-eksworkshop-2019/workshop-1/web* 
 
 15. Take the ELB URL and search for *"mysfitsApiEndpoint"* in the *index.html* file and replace the ELB DNS name *without* any trailing "/". So it should be like:
 +
@@ -202,7 +202,7 @@ curl -m3 -v $ELB
 ....
 +
 
-16. Now upload this new file to S3. Make sure you are in this directory: /home/ec2-user/environment/containers-sydsummit-eks-workshop-2019/amazon-ecs-mythicalmysfits-workshop/workshop-1/web
+16. Now upload this new file to S3. Make sure you are in this directory: /home/ec2-user/environment/csydummit-eksworkshop-2019/workshop-1/web
 ```
 aws s3 ls
 ```
@@ -221,7 +221,7 @@ For e.g. http://mythical-mysfits-eks-mythicalbucket-6b9pvvt40bqj.s3-website.us-w
 
 if you see all the mythical mysfits show up now, SUCCESS!! First hurdle done
 
-Now Delete your deployment (verify by going to the console and checking ELB is deleted)
+Now Delete your deployment (verify by going to the console and checking ELB is deleted). **You MUST do this step to continue**
 ```
 $ kubectl delete -f monolith-app.yaml           
 
