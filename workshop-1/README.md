@@ -103,8 +103,8 @@ You will be deploying infrastructure on AWS which will have an associated cost. 
     ```
     $ script/setup
     $ script/EKSPreReqs.sh
-    if the EKSPreReqs.sh script gives error, issue this command:
-    $ chmod +x script/EKSPreReqs.sh 
+    if the EKSPreReqs.sh or any script gives error, issue this command:
+    $ chmod +x script/* 
     ```
 
     This first script will delete some unneeded Docker images to free up disk space, populate a DynamoDB table with some seed data, upload site assets to S3, and install some Docker-related authentication mechanisms that will be discussed later. Make sure you see the "Success!" message when the script completes. The second script will install **kubectl**, **aws-iam-authenticator**, **eksctl** and **kubectx**
