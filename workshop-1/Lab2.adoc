@@ -130,6 +130,7 @@ ReplicaSets.
 [source,shell]
 ----
 kubectl get pods --watch
+kubectl describe pods (to check the status of the containers)
 ----
 +
 [.output]
