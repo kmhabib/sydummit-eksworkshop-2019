@@ -525,7 +525,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     ```
 
     ```sh
-    $ docker run -p 8000:80 -e AWS_DEFAULT_REGION=us-west-2 -e DDB_TABLE_NAME=*TABLE_NAME* monolith-service
+    $ docker run -p 8000:80 -e AWS_DEFAULT_REGION=us-west-2 -e DDB_TABLE_NAME=<YOUR_TABLE_NAME> monolith-service
     ```
 
     *Note: You can also find your DynamoDB table name in the file `workshop-1/cfn-output.json` derived from the outputs of the CloudFormation stack or from the aws cli command given above.*
@@ -563,7 +563,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     In the tab you have the running container, type **Ctrl-C** to stop the running container.  Notice, the container ran in the foreground with stdout/stderr printing to the console.  In a production environment, you would run your containers in the background and configure some logging destination.  We'll worry about logging later, but you can try running the container in the background using the -d flag.
 
     ```sh
-    $ docker run -d -p 8000:80 -e AWS_DEFAULT_REGION=us-west-2 -e DDB_TABLE_NAME=*TABLE_NAME* monolith-service
+    $ docker run -d -p 8000:80 -e AWS_DEFAULT_REGION=us-west-2 -e DDB_TABLE_NAME=<YOUR_TABLE_NAME> monolith-service
     ```
 
     List running docker containers with the [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) command to make sure the monolith is running.
@@ -620,8 +620,8 @@ aws ecr describe-repositories | jq '.repositories[1].repositoryUri'
 Tag and push your container image to the mono repository.
 
     
-    $ docker tag monolith-service:latest *<ECR_REPOSITORY_URI>*:latest
-    $ docker push *<ECR_REPOSITORY_URI>*:latest
+    $ docker tag monolith-service:latest <ECR_REPOSITORY_URI>:latest
+    $ docker push <ECR_REPOSITORY_URI>:latest
 
 When you issue the push command, Docker pushes the layers up to ECR.
 
