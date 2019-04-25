@@ -160,7 +160,7 @@ PORT(S)        AGE       SELECTOR
    available at the *EXTERNAL-IP* field. Copy and paste this into a new browser
    tab.
 
-12. Issue a curl command
+12. Issue a curl command. *Note: It can take some time for the ALB to have healthy backend instances, so keep checking the curl or log into the AWS Console EC2 service and check the status of ELB and the health of backend instances are 'InService'*
 +
 [source,shell]
 ----
