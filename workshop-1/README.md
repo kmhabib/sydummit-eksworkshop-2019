@@ -95,7 +95,7 @@ You will be deploying infrastructure on AWS which will have an associated cost. 
     In the terminal, change directory to the subdirectory for this workshop in the repo:
 
     ```
-    $ cd sydummit-eksworkshop-2019.git/workshop-1
+    $ cd sydummit-eksworkshop-2019/workshop-1
     ```
 
 5. Run some additional automated setup steps with the `setup` script:
