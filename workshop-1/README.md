@@ -61,11 +61,11 @@ You will be deploying infrastructure on AWS which will have an associated cost. 
 
 | Region | Launch Template |
 | ------------ | ------------- | 
-**Oregon** (us-west-2) | [![Launch Mythical Mysfits Stack into Oregon with CloudFormation](images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=mythical-mysfits-eks&templateURL=https://s3-us-west-2.amazonaws.com/cf-templates-z37cb1hiurgy-us-west-2/modifiedcore.yml)  
+**Oregon** (us-west-2) | [![Launch Mythical Mysfits Stack into Oregon with CloudFormation](images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=mythical-mysfits-eks&templateURL=https://s3-us-west-2.amazonaws.com/syd-eksworkshop-2019/modifiedcore.yml)  
 
 
 
-2. The template will automatically bring you to the CloudFormation Dashboard and start the stack creation process in the specified region. Give the stack a name that is unique within your account, and proceed through the wizard to launch the stack. Leave all options at their default values, but make sure to check the box to allow CloudFormation to create IAM roles on your behalf:
+2. The template will automatically bring you to the CloudFormation Dashboard and start the stack creation process in the specified region. Give the stack a name that is unique within your account, and proceed through the wizard to launch the stack. Leave all options at their default values, but make sure to check the box to allow CloudFormation to create IAM roles on your behalf (you may not see this if there's no new IAM role being created):
 
     ![IAM resources acknowledgement](images/00-cf-create.png)
 
@@ -87,7 +87,7 @@ You will be deploying infrastructure on AWS which will have an associated cost. 
     In the bottom panel of your new Cloud9 IDE, you will see a terminal command line terminal open and ready to use.  Run the following git command in the terminal to clone the necessary code to complete this tutorial:
 
     ```
-    $ git clone https://github.com/kmhabib/containers-sydsummit-eks-workshop-2019.git
+    $ git clone https://github.com/kmhabib/sydummit-eksworkshop-2019.git
     ```
 
     After cloning the repository, you'll see that your project explorer now includes the files cloned.
@@ -95,7 +95,7 @@ You will be deploying infrastructure on AWS which will have an associated cost. 
     In the terminal, change directory to the subdirectory for this workshop in the repo:
 
     ```
-    $ cd containers-sydsummit-eks-workshop-2019/amazon-ecs-mythicalmysfits-workshop/workshop-1
+    $ cd sydummit-eksworkshop-2019.git/workshop-1
     ```
 
 5. Run some additional automated setup steps with the `setup` script:
@@ -174,13 +174,13 @@ aws iam get-instance-profile --instance-profile-name $INSTANCE_PROFILE_NAME --qu
 
 The output is the role name.
 
-```
+```sh
 eksworkshop-admin
 ```
 
 Compare that with the result of
 
-```
+```sh
 aws sts get-caller-identity
 ```
 
@@ -231,7 +231,8 @@ At this point, the Mythical Mysfits website should be available at the static si
 
 Please run this command to generate SSH Key in Cloud9. This key will be used on the worker node instances to allow ssh access if necessary.
 
-```bash
+```sh
+bash
 ssh-keygen
 ```
 
@@ -248,8 +249,8 @@ aws ec2 import-key-pair --key-name "eksworkshop" --public-key-material file://~/
 ---
 ### Now Launch an EKS Cluster
 ---
-You'll use EKSCTL to launch your EKS cluster. To learn more about EKSCTL, [click here](https://youtu.be/3-OZqA5p1HA)
-```
+You'll use EKSCTL to launch your EKS cluster. To learn more about EKSCTL, [click here](https://youtu.be/3-OZqA5p1HA). **Make sure you keep the name of the cluster `mythicalmysfits` since future labs will rely on this**
+```sh
 eksctl create cluster --full-ecr-access --name=mythicalmysfits
 ```
 
@@ -521,11 +522,11 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
         ]
     }`
 
-    <pre>
-    $ docker run -p 8000:80 -e AWS_DEFAULT_REGION=<b><i>us-west-2</i></b> -e DDB_TABLE_NAME=<b><i>TABLE_NAME</i></b> monolith-service
-    </pre>
+    ```sh
+    $ docker run -p 8000:80 -e AWS_DEFAULT_REGION=us-west-2 -e DDB_TABLE_NAME=*TABLE_NAME* monolith-service
+    ```
 
-    *Note: You can find your DynamoDB table name in the file `workshop-1/cfn-output.json` derived from the outputs of the CloudFormation stack or from the aws cli command given above.*
+    *Note: You can also find your DynamoDB table name in the file `workshop-1/cfn-output.json` derived from the outputs of the CloudFormation stack or from the aws cli command given above.*
 
     Here's sample output as the application starts:
 
@@ -559,9 +560,9 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
 
     In the tab you have the running container, type **Ctrl-C** to stop the running container.  Notice, the container ran in the foreground with stdout/stderr printing to the console.  In a production environment, you would run your containers in the background and configure some logging destination.  We'll worry about logging later, but you can try running the container in the background using the -d flag.
 
-    <pre>
-    $ docker run -d -p 8000:80 -e AWS_DEFAULT_REGION=<b><i>us-west-2</i></b> -e DDB_TABLE_NAME=<b><i>TABLE_NAME</i></b> monolith-service
-    </pre>
+    ```sh
+    $ docker run -d -p 8000:80 -e AWS_DEFAULT_REGION=us-west-2 -e DDB_TABLE_NAME=*TABLE_NAME* monolith-service
+    ```
 
     List running docker containers with the [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) command to make sure the monolith is running.
 
@@ -571,11 +572,11 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
 
     You should see monolith running in the list. Now repeat the same curl command as before, ensuring you see the same list of Mysfits. You can check the logs again by running [docker logs](https://docs.docker.com/engine/reference/commandline/ps/) (it takes a container name or id fragment as an argument).
 
-    <pre>
+    ```sh
     $ docker logs <b><i>CONTAINER_ID</i></b>
-    </pre>
+    ```
 
-    Here's sample output from the above commands:
+    Here's **sample** output from the above commands:
 
    <pre>
     $ docker run -d -p 8000:80 -e AWS_DEFAULT_REGION=<=us-west-2 -e DDB_TABLE_NAME=Table-mythical-mysfits-eks monolith-service
@@ -608,7 +609,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
 <details>
 <summary>HINT</summary>
 <pre>
-You can also use the AWS CLI command to get the list of ECR Repos. Use the one whih has monolith in the name:
+You can also use the AWS CLI command to get the list of ECR Repos. Use the one which has monolith in the name:
 aws ecr describe-repositories | jq '.repositories[0].repositoryUri'
 aws ecr describe-repositories | jq '.repositories[1].repositoryUri'
 </pre>
