@@ -8,7 +8,7 @@ In this lab, you'll build the monolithic Mythical Mysfits adoption platform with
 ### Requirements:
 
 * AWS account - if you don't have one, it's easy and free to [create one](https://aws.amazon.com/).
-* AWS IAM account with elevated privileges allowing you to interact with CloudFormation, IAM, EC2, EKS, ECR, ELB/ALB, VPC, SNS, CloudWatch, DynamoDB, Cloud9. [Learn how](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
+* AWS IAM account with elevated privileges allowing you to interact with CloudFormation, IAM, EC2, EKS, ECR, ELB/ALB, VPC, SNS, CloudWatch, DynamoDB, Cloud9, CodePipeline, CodeBuild. [Learn how](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 * Familiarity with [Python](https://wiki.python.org/moin/BeginnersGuide/Programmers), [Docker](https://www.docker.com/), and [AWS](httpts://aws.amazon.com) - *not required but a bonus*.
 
 ### What you'll do:
