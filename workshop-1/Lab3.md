@@ -58,7 +58,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
     $ docker push <b><i>ECR_REPOSITORY_URI</i></b>:like
     </pre>
 
-4. Navigate to Kubernetes/micro folder `/containers-sydsummit-eks-workshop-2019/amazon-ecs-mythicalmysfits-workshop/Kubernetes`.  Open the `nolikeservice-app.yaml` file.  Repeat steps 1-4 from [*Lab 2*](Lab2.adoc).
+4. Navigate to Kubernetes/micro folder `/home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro`.  Open the `nolikeservice-app.yaml` file.  Repeat steps 1-4 from [*Lab 2*](Lab2.adoc).
 
 5. Replace the image ENV variable in the `nolikeservice-app.yaml` with the ECR ARN for the "nolike" version of the container image. Then, replace the `DDB_TABLE_NAME` value with your DynamoDB table name.  Update the monolith service to use this revision.
 
@@ -104,7 +104,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
    kubectl get ingress/mythical-mysfits-eks
   ```
 
-8. Get the DNS name of the alb (kubectl get ingress) or by issuing:
+8. Get the DNS name of the alb (using command: kubectl get ingress) or by issuing:
   ```
   kubectl logs -n kube-system $(kubectl get po -n kube-system | egrep -o alb-ingress[a-zA-Z0-9-]+)
   ```
@@ -188,6 +188,13 @@ kubectl logs <pod name 1> (there should be 4 pods)
 
 15. Now make one last deployment for the monolith to refer to this new container image URI (this process should be familiar now, and you can probably see that it makes sense to leave this drudgery to a CI/CD service in production), update the monolith service to use the new deployment, and make sure the app still functions as before.
 
+**CLEANUP: If you don't have enough time to go to the next lab, please cleanup by issuing the below commands, otherwise skip this cleanup and do it at the end of next module**
+Issue the following commands:
+```
+kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro/likeservice-app.yaml 
+kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro/nolikeservice-app.yaml
+kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro/mythical-ingress.yaml 
+```
 ### Checkpoint:
 Congratulations, you've successfully rolled out the like microservice from the monolith.  If you have time, try repeating this lab to break out the adoption microservice.  You can now proceed to [Lab 4](Lab4/README.md) and setup your application monitoring with [CloudWatch](https://aws.amazon.com/cloudwatch/) and [fluentd](https://www.fluentd.org/). Otherwise, please remember to follow the steps  in the **[Workshop Cleanup](README.md#workshop-cleanup)** to make sure all assets created during the workshop are removed so you do not see unexpected charges after today.
 
