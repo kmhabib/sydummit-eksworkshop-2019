@@ -580,7 +580,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     Here's **sample** output from the above commands:
 
    <pre>
-    $ docker run -d -p 8000:80 -e AWS_DEFAULT_REGION=<=us-west-2 -e DDB_TABLE_NAME=Table-mythical-mysfits-eks monolith-service
+    $ docker run -d -p 8000:80 -e AWS_DEFAULT_REGION=us-west-2 -e DDB_TABLE_NAME=Table-mythical-mysfits-eks monolith-service
     51aba5103ab9df25c08c18e9cecf540592dcc67d3393ad192ebeda6e872f8e7a
     $ docker ps
     CONTAINER ID        IMAGE                           COMMAND                  CREATED             STATUS              PORTS                  NAMES
