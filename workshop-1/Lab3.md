@@ -21,7 +21,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
 
 ### Instructions:
 
-1. First, we need to add some glue code in the monolith to support moving the "like" function into a separate service. You'll use your Cloud9 environment to do this.  If you've closed the tab, go to the [Cloud9 Dashboard](https://console.aws.amazon.com/cloud9/home) and find your environment. Click "**Open IDE**". Find the `app/monolith-service/service/mythicalMysfitsService.py` source file, and uncomment the following section:
+1. First, we need to add some glue code in the monolith to support moving the "like" function into a separate service. You'll use your Cloud9 environment to do this.  If you've closed the tab, go to the [Cloud9 Dashboard](https://console.aws.amazon.com/cloud9/home) and find your environment. Click "**Open IDE**". Find the `app/monolith-service/service/mythicalMysfitsService.py` source file, and uncomment the following section [be careful with indenting, python is sensitive to indenting]:
 
     ```
     # @app.route("/mysfits/<mysfit_id>/fulfill-like", methods=['POST'])
