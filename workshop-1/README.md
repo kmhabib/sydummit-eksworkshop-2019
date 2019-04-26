@@ -702,7 +702,7 @@ Delete manually created resources throughout the labs:
     * kubectl delete -f Kubernetes/likeservice-app.yaml
     * kubectl delete -f Kubernetes/nolikeservice-app.yaml
     * kubectl delete -f Kubernetes/mythical-ingress.yaml
-    * (if you created the dashboard) kubectl delete -https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+    * (if you created the dashboard) kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 
 
 2. Delete Docker images pushed to your ECR repository
