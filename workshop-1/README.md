@@ -289,6 +289,34 @@ NAME                                           STATUS    ROLES     AGE       VER
 ip-192-168-6-81.us-west-2.compute.internal     Ready     <none>    6m        v1.11.9
 ip-192-168-72-167.us-west-2.compute.internal   Ready     <none>    6m        v1.11.9
 ```
+
+Once the cluster has completely created, attach the proper roles to the EKS Nodes role so that they have access to DynamoDB (for Lab 2) and ability to spin up an ALB ingres service (Lab 3):
+
+```sh
+cd /home/ec2-user/environment/sydummit-eksworkshop-2019/workshop-1/Lab4
+```
+Find the IAM role associated with the EC2 worker nodes, and assign it to a variable:
+
+```sh
+ROLE_NAME=<worker node role>
+```
+
+```
+My Node ROLE_NAME is: eksctl-mythicalmysfits-nodegroup-NodeInstanceRole-1WI0T4HNSIDXW
+```
+
+Attach the ingress *iam-ingress-dynamodb-policy.json* file as an inline policy to the Worker Node Role, this inline policy will be called *ingress-ddb*:
+
+```sh
+aws iam put-role-policy --role-name $ROLE_NAME --policy-name ingress-ddb --policy-document file:// iam-ingress-dynamodb-policy.json
+```
+
+Validate that the policy is attached to the role:
+
+```sh
+aws iam get-role-policy --role-name $ROLE_NAME --policy-name ingress-ddb
+```
+
 **Optional**
 
 <details>
