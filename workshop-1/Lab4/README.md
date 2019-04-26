@@ -52,7 +52,7 @@ Select the region that is mentioned in `fluentd.yml` to browse the Cloudwatch Lo
 3) Go to the "mythicalmysfits" log group
 4) Now before you search for the logs, go to your mythical mysfits webpage and click on the "heart" icon which calls the "like" API. 
 5) Now go back to the Cloudwatch console and search the log group for "Like processed". You should see the logs show that message being issued by the "like" container image. 
-![Like Processed](images/fluentd-like.png)
+![Like Processed](../images/fluentd-like.png)
 
 **CLEANUP REQUEST: PLEASE you MUST issue these commands whether you plan to continue to the next lab or finish, otherwise our account cleanup scripts won't work.**
 Issue the following commands:
