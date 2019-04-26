@@ -96,7 +96,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
             -------------------------------------------------------------------------------
         ```
 
-7. Still at this point, you'd notice on the console that the ALB has not spun up. Now we'll spin up the ALB giving the path to the two microservices that we have created (like and no like) and then deploy our alb-ingress-controller
+7. Still at this point, you'd notice on the console that the ALB has not spun up. Now we'll spin up the ALB giving the path to the two microservices that we have created (like and no like) and then deploy our alb-ingress-controller. Examine the file *mythical-ingress.yaml*, you don't need to make any change to this file but please note that this is what will be setting the rules, ports etc in the ALB. 
   ```
    kubectl apply -f mythical-ingress.yaml 
    kubectl get ingress/mythical-mysfits-eks
