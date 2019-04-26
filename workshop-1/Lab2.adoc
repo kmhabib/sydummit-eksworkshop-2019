@@ -34,7 +34,7 @@ https://kubernetes.io/docs/concepts/workloads/controllers/deployment/[here]
 +
 [source,shell]
 ----
-cd ~/environment/sydsummit-eksworkshop-2019/Kubernetes/mono
+cd /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/mono
 ----
 +
 3. Open the *monolith-app.yaml* file by double clicking the filename
