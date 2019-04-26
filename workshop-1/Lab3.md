@@ -85,7 +85,9 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
     6. Deploy the AWS ALB Ingress controller YAML:
        ```kubectl apply -f alb-ingress-controller.yaml```
     7. Verify that the deployment was successful and the controller started. 
-       ```kubectl logs -n kube-system $(kubectl get po -n kube-system | egrep -o alb-ingress[a-zA-Z0-9-]+)```
+       ```sh
+       kubectl logs -n kube-system $(kubectl get po -n kube-system | egrep -o alb-ingress[a-zA-Z0-9-]+)
+       ```
        you should see the following output: 
         ```
             -------------------------------------------------------------------------------
