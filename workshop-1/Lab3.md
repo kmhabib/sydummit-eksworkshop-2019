@@ -103,9 +103,11 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
   ```
 
 8. Get the DNS name of the alb (using command: kubectl get ingress) or by issuing:
-  ```
+
+  ```sh
   kubectl logs -n kube-system $(kubectl get po -n kube-system | egrep -o alb-ingress[a-zA-Z0-9-]+)
   ```
+  
   You may see some errors show up about "target not found". That's because we haven't created the backend services yet. Once we create that, you should see the rules and targets created in your ALB.
 
   (Example: 07f66c03-default-mythicalm-761d-1712518784.us-west-2.elb.amazonaws.com) and modify the index.html file and upload to s3 again
