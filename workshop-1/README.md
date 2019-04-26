@@ -710,7 +710,7 @@ Delete manually created resources throughout the labs:
 4. Delete ALBs and associated target groups (if they didn't get deleted when you deleted the service)
 5. Delete CloudWatch log groups
 6. Delete Kubernetes cluster
-    * eksctl delete cluster --name=mysticalmysfits
+    * eksctl delete cluster --name=mythicalmysfits
 
     The nodegroup will have to complete the deletion process before the EKS cluster can be deleted. The total process will take approximately 15 minutes, and can be monitored via the CloudFormation Console
 
