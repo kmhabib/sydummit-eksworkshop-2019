@@ -90,7 +90,7 @@ This service was configured with a [LoadBalancer](https://kubernetes.io/docs/tas
 
 ## Trigger a New Deployment
 
-Open your AWS Console and keep your browser open to where your Codepipeline is configured. Open GitHub and select the forked repository with the name `content-eks-deepdive-sample-api-service-go`.
+Open your AWS Console and keep your browser open to where your Codepipeline is configured. Open GitHub and select the forked repository with the name `sydsummit-eks-cicd`.
 
 Click on the `main.go` file and then click on the edit button, which looks like a pencil.
 
