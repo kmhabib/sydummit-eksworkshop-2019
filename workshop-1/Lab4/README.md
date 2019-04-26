@@ -54,7 +54,7 @@ Select the region that is mentioned in `fluentd.yml` to browse the Cloudwatch Lo
 5) Now go back to the Cloudwatch console and search the log group for "Like processed". You should see the logs show that message being issued by the "like" container image. 
 ![Like Processed](../images/fluentd-like.png)
 
-**CLEANUP REQUEST: PLEASE you MUST issue these commands whether you plan to continue to the next lab or finish, otherwise our account cleanup scripts won't work.**
+**CLEANUP REQUEST: PLEASE you MUST issue these commands whether you plan to continue to the next lab or finish, otherwise our account cleanup scripts won't work. You won't need these in lab 5 since we are using a different container image**
 Issue the following commands:
 ```
 kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/workshop-1/Lab4/fluentd.yml
@@ -66,5 +66,5 @@ kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernete
 ### Checkpoint:
 Congratulations, you've successfully rolled out the like microservice from the monolith and observed the logs in CloudWatch.  If you have time, try to do the CI/CD lab by going to this link: [Lab 5](../Lab5/README.md). Otherwise, please remember to follow the steps  in the **[Workshop Cleanup](../README.md#workshop-cleanup)** to make sure all assets created during the workshop are removed so you do not see unexpected charges after today.
 
-**Go to [Lab 5](../Lab5/README.md)**
+**Go to [Lab 5](../Lab5/README.md)** or
 **To go [back](../README.md) to main menu**
