@@ -212,6 +212,11 @@ Note the bucket name where your index.html file is and copy your new index.html 
 aws s3 cp index.html s3://-mythicalbucket-xxx/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers full=emailaddress=user@example.com
 ```
 
+if for some reason, you have problems attaching your account email, just issue the command without the email address like below:
+```sh
+aws s3 cp index.html s3://-mythicalbucket-xxx/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+```
+
 image::images/S3Permissions.png[S3 permissions]
 
 *Note: Your bucket name will be different.*
