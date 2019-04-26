@@ -1,5 +1,9 @@
 # Logging with Fluentd
 
+Now lets move the Lab4 directory.
+```sh
+cd /home/ec2-user/environment/sydummit-eksworkshop-2019/workshop-1/Lab4
+```
 Find the IAM role associated with the EC2 worker nodes, and assign it to a variable:
 
 ```sh
