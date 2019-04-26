@@ -104,7 +104,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
    kubectl get ingress/mythical-mysfits-eks
   ```
 
-8. Get the DNS name of the alb (using command: kubectl get ingress) or by issuing:
+8. Get the DNS name of the alb (using command: kubectl get ingress) or go to the EC2/LoadBalancer on console and copy the ALB DNS name. Now check the logs:
 
   ```sh
   kubectl logs -n kube-system $(kubectl get po -n kube-system | egrep -o alb-ingress[a-zA-Z0-9-]+)
@@ -114,7 +114,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
 
   (Example: 07f66c03-default-mythicalm-761d-1712518784.us-west-2.elb.amazonaws.com) and modify the index.html file and upload to s3 again
   ```
-  aws s3 cp ../../workshop-1/web/index.html s3://mythical-mysfits-eks-mythicalbucket-xxx/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+  aws s3 cp /home/ec2-user/environment/sydummit-eksworkshop-2019//workshop-1/web/index.html s3://mythical-mysfits-eks-mythicalbucket-xxx/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
   ```
   ALB can take 5-10 mins to be in-service
 
