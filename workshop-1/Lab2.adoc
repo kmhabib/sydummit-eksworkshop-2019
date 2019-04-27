@@ -91,7 +91,7 @@ spec:
 
 5. Replace the ENV variable with image value with the exact ECR IMAGE URI that you built in the previous lab for your monolith image and also update your DynamoDB Tablename (e.g. Table-mythical-mysfits-eks).
 
-6. Within the IAM console, open the EKS node group role (IAM role with 'eksctl-mythicalmysfits-nodegroup' prefix) and add the AWS-managed policy `AmazonDynamoDBFullAccess`.
+6. *SKIP THIS STEP, We did this in Lab 0* Within the IAM console, open the EKS node group role (IAM role with 'eksctl-mythicalmysfits-nodegroup' prefix) and add the AWS-managed policy `AmazonDynamoDBFullAccess`.
 
 7. Apply your manifest by running this command in your Cloud9 terminal:
 +
