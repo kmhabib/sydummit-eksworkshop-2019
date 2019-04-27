@@ -247,4 +247,4 @@ Nice work!  You've created a kubernetes service and used a deployment the monoli
 ## FINAL Workshop Cleanup
 
 This is really important because if you leave stuff running in your account, it will continue to generate charges.  Certain things were created by CloudFormation and certain things were created manually throughout the workshop.  
-**Please follow the steps listed in the link:Final Cleanup[finalcleanup.md] link**
+**Please follow the steps listed in the link:finalcleanup.md[link]**
