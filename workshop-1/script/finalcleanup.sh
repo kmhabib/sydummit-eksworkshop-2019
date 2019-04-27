@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+#Delete contents of all ECR repo
+#Delete contents of the mythicalmysfits S3 bucket
 # Fill the role for nodegroup. looks like eksctl-mythicalmysfits-nodegroup-NodeInstanceRole-1TLRKSZC5S36X
 ROLE='YOUR_ROLENAME_FOR_EKS_NODEGROUP'
 
