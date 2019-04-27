@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Delete contents of all ECR repo
 #Delete contents of the mythicalmysfits S3 bucket
-# Fill the role for nodegroup. looks like eksctl-mythicalmysfits-nodegroup-NodeInstanceRole-1TLRKSZC5S36X
+#Fill the role for nodegroup. looks like eksctl-mythicalmysfits-nodegroup-NodeInstanceRole-1TLRKSZC5S36X
 ROLE='YOUR_ROLENAME_FOR_EKS_NODEGROUP'
 
 aws iam delete-role-policy --role-name EKSDeepDiveCodeBuildKubectlRole --policy-name eks-describe
@@ -18,7 +18,6 @@ kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/workshop-
 kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro/likeservice-app.yaml 
 kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro/nolikeservice-app.yaml
 kubectl delete -f /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro/mythical-ingress.yaml 
-
 
 aws iam delete-role-policy --role-name $ROLE --policy-name Logs-Policy-For-Worker
 aws iam delete-role-policy --role-name $ROLE --policy-name ingress-ddb

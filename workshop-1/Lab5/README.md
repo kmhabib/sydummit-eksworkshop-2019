@@ -120,3 +120,9 @@ Confirm the update by browsing the ELB URL you used previously.
 *Note: Parts of this lab was taken from linuxacademy's [EKS course](https://github.com/linuxacademy/eks-deep-dive-2019/tree/master/4-2-Continuous-Deployment)*
 
 **GREAT WORK! We hope you enjoyed the lab. To go [back](../README.md) to main menu**
+
+-----
+## FINAL Workshop Cleanup
+
+This is really important because if you leave stuff running in your account, it will continue to generate charges.  Certain things were created by CloudFormation and certain things were created manually throughout the workshop.  
+**Please follow the steps listed  [*Final Cleanup*](finalcleanup.md)**

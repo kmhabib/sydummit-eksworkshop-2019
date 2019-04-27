@@ -202,3 +202,9 @@ Congratulations, you've successfully rolled out the like microservice from the m
 
 **Go to [Lab 4](Lab4/README.md)**
 **To go [back](README.md) to main menu**
+
+-----
+## FINAL Workshop Cleanup
+
+This is really important because if you leave stuff running in your account, it will continue to generate charges.  Certain things were created by CloudFormation and certain things were created manually throughout the workshop.  
+**Please follow the steps listed  [*Final Cleanup*](finalcleanup.md)**
