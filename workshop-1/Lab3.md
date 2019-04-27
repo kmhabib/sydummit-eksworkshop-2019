@@ -68,14 +68,14 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
 
 ![alb-ingress](images/ALBIngress.png)
 
-- Steps to deploy the AWS ALB Ingress controller
-    1. Install ekcsctl (we have already done this, so skip)
-    2. Create an IAM policy to give the ingress controller the right permissions:
+- Steps to deploy the AWS ALB Ingress controller [Start from Step 4]
+    1. Install ekcsctl (*we have already done this, so skip*)
+    2. Create an IAM policy to give the ingress controller the right permissions: (*we have already done this in Lab 0, so skip*)
        - Go to the IAM Console and choose the section Policies.
        - Select Create policy.
        - Embed the contents of the template [iam-policy.json](https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.0.0/docs/examples/iam-policy.json) in the JSON section.
        - **Review policy** and save as “ingressController-iam-policy”
-    3. Attach the IAM policy to the EKS worker nodes:
+    3. Attach the IAM policy to the EKS worker nodes: (*we have already done this in Lab 0, so skip*)
        - Go back to the IAM Console.
        - Choose the section **Roles** and search for the NodeInstanceRole of your EKS worker node. Example: eksctl-attractive-gopher-NodeInstanceRole-xxxxxx
        - Attach policy “ingressController-iam-policy.”
