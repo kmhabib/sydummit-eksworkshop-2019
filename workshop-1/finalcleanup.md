@@ -11,4 +11,4 @@
   - aws-cloud9-Project-mythical-mysfits-eks-XXXXX (name of your Cloud9 CF stack)
   - mythical-mysfits-eks ( The initial Cloudformation template you created)
 
-** All resources should be successfully deleted now. If they have not, please check "drift" on your Cloudformation stack to figure out what values were different. **
+**All resources should be successfully deleted now. If they have not, please check "drift" on your Cloudformation stack to figure out what values were different.**
