@@ -244,7 +244,6 @@ Nice work!  You've created a kubernetes service and used a deployment the monoli
 
 *Now that we have our containers deployed to Amazon EKS we can continue with the workshop. You can start link:Lab3.md[lab 3] or go link:README.md[back] to the main page and start lab 3 from there.*
 
------
 ## FINAL Workshop Cleanup
 
 This is really important because if you leave stuff running in your account, it will continue to generate charges.  Certain things were created by CloudFormation and certain things were created manually throughout the workshop.  
