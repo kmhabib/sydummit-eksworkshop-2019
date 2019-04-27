@@ -22,7 +22,7 @@ These labs are designed to be completed in sequence, and the full set of instruc
 * **Lab 2:** [Deploy the container using EKS](Lab2.adoc)
 * **Lab 3:** [Incrementally build and deploy more microservices with EKS and ALB Ingress](Lab3.md)
 * **LAB 4:** [Configure CloudWatch Logs](Lab4/README.md)
-* **[*OPTIONAL*] LAB 5:** [Configure a CI/CD pipeline](Lab5/README.md)
+* **[*If Time Permits*] LAB 5:** [Configure a CI/CD pipeline](Lab5/README.md)
 * **Cleanup** [Put everything away nicely](#workshop-cleanup)
 
 ### Conventions:
