@@ -231,10 +231,12 @@ image::images/MysfitsLab2.png[Mysfits are showing up!]
 
 Now Delete your deployment (verify by going to the console and checking ELB is deleted). **You MUST do this step to continue**
 ```
-$ kubectl delete -f monolith-app.yaml           
+kubectl delete -f monolith-app.yaml
+```          
 
 Output will be as below.
 
+```
 deployment.apps "mythical-mysfits-eks" deleted    
 service "mythical-mysfits-eks" deleted  
 ```                                                                                      
