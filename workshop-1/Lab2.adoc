@@ -231,6 +231,7 @@ image::images/MysfitsLab2.png[Mysfits are showing up!]
 
 Now Delete your deployment (verify by going to the console and checking ELB is deleted). **You MUST do this step to continue**
 ```
+cd /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/mono
 kubectl delete -f monolith-app.yaml
 ```          
 
