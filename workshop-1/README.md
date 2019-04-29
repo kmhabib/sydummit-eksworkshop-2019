@@ -420,7 +420,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     </pre>
     </details>
 
-    If your Dockerfile looks good, rename your file from "Dockerfile.draft" to "Dockerfile" and continue to the next step.
+    If your Dockerfile looks good, rename your file from "Dockerfile.draft" to "Dockerfile" and continue to the next step.  (If you opened a new terminal window while waiting for the EKS ckuster to start, you may need to `cd sydummit-eksworkshop-2019/workshop-1/app/monolith-service` to run this command.)
 
     <pre>
     $ mv Dockerfile.draft Dockerfile
