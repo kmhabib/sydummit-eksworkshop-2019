@@ -203,7 +203,7 @@ curl -m3 -v $ELB
 ....
 +
 
-16. Now upload this new file to S3. Make sure you are in this directory: /home/ec2-user/environment/csydummit-eksworkshop-2019/workshop-1/web
+16. Now upload this new file to S3. Make sure you are in this directory: /home/ec2-user/environment/sydummit-eksworkshop-2019/workshop-1/web
 ```
 aws s3 ls
 ```
