@@ -527,7 +527,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
      ---> 6fd52da27f84
     </pre>
 
-    You now have a Docker image built.  The -t flag names the resulting container image.  List your docker images and you'll see the "monolith-service" image in the list. Here's a sample output, note the monolith image in the list:
+    You now have a Docker image built.  The -t flag names the resulting container image.  List your docker images using `docker image list`, and you'll see the "monolith-service" image in the list. Here's a sample output, note the monolith image in the list:
 
     <pre>
     $ docker images
