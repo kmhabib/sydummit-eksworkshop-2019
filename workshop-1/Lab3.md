@@ -37,28 +37,28 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
 2. With this new functionality added to the monolith, rebuild the monolith docker image with a new tag, such as `nolike`, and push it to ECR just as before *Note: It is a best practice to avoid the `latest` tag, [yes we were BAD in the last lab :)] which can be ambiguous. Instead choose a unique, descriptive name, or even better user a Git SHA and/or build ID.* *Note Again: you can delete the image that you pushed with the ":latest" tag from the last lab to avoid confusion*:
 
     <pre>
-    $ cd app/monolith-service
-    $ docker build -t monolith-service:nolike .
-    $ docker tag monolith-service:nolike <b><i>ECR_REPOSITORY_URI</i></b>:nolike
-    $ docker push <b><i>ECR_REPOSITORY_URI</i></b>:nolike
+    cd /home/ec2-user/environment/sydummit-eksworkshop-2019/workshop-1/app/monolith-service
+    docker build -t monolith-service:nolike .
+    docker tag monolith-service:nolike <b><i>ECR_REPOSITORY_URI</i></b>:nolike
+    docker push <b><i>ECR_REPOSITORY_URI</i></b>:nolike
     </pre>
     
-3. Now, build the like service and push it to ECR. Like service is located in the folder `/home/ec2-user/environment/sydummit-eksworkshop-2019/workshop-1/app/like-service`. Dockerfile for "like-service" has already been created for you, you don't need to edit it. Now aake sure you get the repo name with "like" in it. For example, ours is `514700858447.dkr.ecr.us-west-2.amazonaws.com/mythic-like-cd4hx063h3aq`. You will need this once you build the image and then have to push it to the ECR repo which will store the "like" service docker image. To find the like-service ECR repo URI, navigate to [Repositories](https://console.aws.amazon.com/ecs/home#/repositories) in the ECS dashboard, and find the repo named like <code><b><i>STACK_NAME</i></b>-like-XXX</code>.  Click on the like-service repository and copy the repository URI.
+3. Now, build the like service and push it to ECR. Like service is located in the folder `/home/ec2-user/environment/sydummit-eksworkshop-2019/workshop-1/app/like-service`. Dockerfile for "like-service" has already been created for you, you don't need to edit it. Now make sure you get the repo name with "like" in it. For example, ours is `514700858447.dkr.ecr.us-west-2.amazonaws.com/mythic-like-cd4hx063h3aq`. You will need this once you build the image and then have to push it to the ECR repo which will store the "like" service docker image. To find the like-service ECR repo URI, navigate to [Repositories](https://console.aws.amazon.com/ecs/home#/repositories) in the ECS dashboard, and find the repo named like <code><b><i>STACK_NAME</i></b>-like-XXX</code>.  Click on the like-service repository and copy the repository URI.
 
     ![Getting Like Service Repo](images/04-ecr-like.png)
 
     *Note: Your URI will be unique.*
 
     <pre>
-    $ cd app/like-service
-    $ docker build -t like-service .
-    $ docker tag like-service:latest <b><i>ECR_REPOSITORY_URI</i></b>:like
-    $ docker push <b><i>ECR_REPOSITORY_URI</i></b>:like
+    cd ../like-service
+    docker build -t like-service .
+    docker tag like-service:latest <b><i>ECR_REPOSITORY_URI</i></b>:like
+    docker push <b><i>ECR_REPOSITORY_URI</i></b>:like
     </pre>
 
-4. Now that we have broken our monolith into a microservice, consisting of "nolike" and "like" code, we'll now deploy these as two separate services on our EKS cluster using the ALB Ingres. Navigate to `/home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro` folder.  Open the `nolikeservice-app.yaml` file.  Repeat steps 1-4 from [*Lab 2*](Lab2.adoc).
+4. Now that we have broken our monolith into a microservice, consisting of "nolike" and "like" code, we'll now deploy these as two separate services on our EKS cluster using the ALB Ingres. Navigate to `/home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro` folder.  Open the `nolikeservice-app.yaml` file.
 
-5. Replace the image ENV variable in the `nolikeservice-app.yaml` with the ECR URI for the "nolike" version of the container image that you just pushed. Then, replace the `DDB_TABLE_NAME` value with your DynamoDB table name.  Update the monolith service to use this revision. ![Get the nolike service](images/05-ecr-nolike.png) *Note: In the image above, we still have the :latest image in our ECR repo, you should have deleted this already and so won't see it in your ECR mono repo*
+5. Replace the image ENV variable in the `nolikeservice-app.yaml` with the ECR URI for the "nolike" version of the container image that you just pushed. Then, replace the `DDB_TABLE_NAME` value with your DynamoDB table name.  ![Get the nolike service](images/05-ecr-nolike.png) *Note: In the image above, we still have the :latest image in our ECR repo, you should have deleted this already and so won't see it in your ECR mono repo*
 
 6. Before we deploy this microservice, we'll go into the details of setting up the [ALB Ingress Controller](https://aws.amazon.com/blogs/opensource/kubernetes-ingress-aws-alb-ingress-controller/). 
 
@@ -68,23 +68,25 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
 
 ![alb-ingress](images/ALBIngress.png)
 
-- Steps to deploy the AWS ALB Ingress controller [Start from Step 4]
-    1. Install ekcsctl (*we have already done this, so skip*)
-    2. Create an IAM policy to give the ingress controller the right permissions: (*we have already done this in Lab 0, so skip*)
+- Steps to deploy the AWS ALB Ingress controller
+    1. Create an IAM policy to give the ingress controller the right permissions: (*we have already done this in Lab 0, so skip*)
        - Go to the IAM Console and choose the section Policies.
        - Select Create policy.
        - Embed the contents of the template [iam-policy.json](https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.0.0/docs/examples/iam-policy.json) in the JSON section.
        - **Review policy** and save as “ingressController-iam-policy”
-    3. Attach the IAM policy to the EKS worker nodes: (*we have already done this in Lab 0, so skip*)
+    2. Attach the IAM policy to the EKS worker nodes: (*we have already done this in Lab 0, so skip*)
        - Go back to the IAM Console.
        - Choose the section **Roles** and search for the NodeInstanceRole of your EKS worker node. Example: eksctl-attractive-gopher-NodeInstanceRole-xxxxxx
        - Attach policy “ingressController-iam-policy.”
-    4. Deploy the RBAC Roles and RoleBinding needed by AWS ALB ingress controller:
+    3. Deploy the RBAC Roles and RoleBinding needed by AWS ALB ingress controller:
        ```kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.0.0/docs/examples/rbac-role.yaml```
-    5. Modify the *alb-ingress-controller.yaml* file in the **/home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro** folder and edit the cluster name to your cluster name (that you recorded in Lab0 when setting up EKS cluster, we called our cluster *mythicalmysfits*)
-    6. Deploy the AWS ALB Ingress controller YAML:
-       ```kubectl apply -f alb-ingress-controller.yaml```
-    7. Verify that the deployment was successful and the controller started. 
+    4. Modify the *alb-ingress-controller.yaml* file in the **/home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro** folder and edit the cluster name to your cluster name (that you recorded in Lab0 when setting up EKS cluster, we called our cluster *mythicalmysfits*)
+    5. Deploy the AWS ALB Ingress controller YAML:
+       ```
+       cd /home/ec2-user/environment/sydummit-eksworkshop-2019/Kubernetes/micro
+       kubectl apply -f alb-ingress-controller.yaml
+       ```
+    6. Verify that the deployment was successful and the controller started. 
        ```sh
        kubectl logs -n kube-system $(kubectl get po -n kube-system | egrep -o alb-ingress[a-zA-Z0-9-]+)
        ```
@@ -112,7 +114,7 @@ As with the monolith, you'll be using [EKS](https://aws.amazon.com/eks/) to depl
   
   You may see some errors show up about "target not found". That's because we haven't created the backend services yet. Once we create that, you should see the rules and targets created in your ALB.
 
-  (Example: 07f66c03-default-mythicalm-761d-1712518784.us-west-2.elb.amazonaws.com) and modify the index.html file and upload to s3 again
+9. Modify the `mysfitsApiEndpoint` in the `index.html` file to point to the ALB like so: `http://07f66c03-default-mythicalm-761d-1712518784.us-west-2.elb.amazonaws.com`, then upload `index.html` to s3 again
   ```
   aws s3 cp /home/ec2-user/environment/sydummit-eksworkshop-2019//workshop-1/web/index.html s3://mythical-mysfits-eks-mythicalbucket-xxx/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
   ```
@@ -179,9 +181,9 @@ kubectl logs <pod name 1> (there should be 4 pods)
     Use the tag `nolike2` now instead of `nolike`.
 
     <pre>
-    $ docker build -t monolith-service:nolike2 .
-    $ docker tag monolith-service:nolike <b><i>ECR_REPOSITORY_URI</i></b>:nolike2
-    $ docker push <b><i>ECR_REPOSITORY_URI</i></b>:nolike2
+    docker build -t monolith-service:nolike2 .
+    docker tag monolith-service:nolike <b><i>ECR_REPOSITORY_URI</i></b>:nolike2
+    docker push <b><i>ECR_REPOSITORY_URI</i></b>:nolike2
     </pre>
 
     If you look at the monolith repository in ECR, you'll see the pushed image tagged as `nolike2`:
