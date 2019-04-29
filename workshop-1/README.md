@@ -651,8 +651,8 @@ aws ecr describe-repositories | jq '.repositories[1].repositoryUri'
 Tag and push your container image to the mono repository.
 
     
-    $ docker tag monolith-service:latest <ECR_REPOSITORY_URI>:latest
-    $ docker push <ECR_REPOSITORY_URI>:latest
+    docker tag monolith-service:latest <ECR_REPOSITORY_URI>:latest
+    docker push <ECR_REPOSITORY_URI>:latest
 
 When you issue the push command, Docker pushes the layers up to ECR.
 
