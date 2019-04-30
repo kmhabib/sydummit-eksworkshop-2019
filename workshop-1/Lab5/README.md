@@ -119,7 +119,7 @@ Confirm the update by browsing the ELB URL you used previously.
     ```
 *Note: Parts of this lab was taken from linuxacademy's [EKS course](https://github.com/linuxacademy/eks-deep-dive-2019/tree/master/4-2-Continuous-Deployment)*
 
-**GREAT WORK! We hope you enjoyed the lab. To go [back](../README.md) to main menu**
+**GREAT WORK! We hope you enjoyed the lab. Click [here](../README.md) to go back to the main menu**
 
 -----
 ## FINAL Workshop Cleanup
