@@ -125,4 +125,4 @@ Confirm the update by browsing the ELB URL you used previously.
 ## FINAL Workshop Cleanup
 
 This is really important because if you leave stuff running in your account, it will continue to generate charges.  Certain things were created by CloudFormation and certain things were created manually throughout the workshop.  
-**Please follow the steps listed  [*Final Cleanup*](finalcleanup.md)**
+**Please follow the steps listed  [*Final Cleanup*](../finalcleanup.md)**
