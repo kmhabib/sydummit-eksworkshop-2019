@@ -63,7 +63,7 @@ Enter your Github username and personal access token you create in the previous 
 
 Wait for the status to change from `CREATE_IN_PROGRESS` to `CREATE_COMPLETE` before moving on to the next step.
 
-Open [CodePipeline in the Management Console](https://console.aws.amazon.com/codesuite/codepipeline/pipelines). You will see a CodePipeline that starts with **eks-workshop-codepipeline**.
+Open [CodePipeline in the Management Console](https://console.aws.amazon.com/codesuite/codepipeline/pipelines). You will see a CodePipeline that starts with **eks-workshop-codepipeline**. **Make sure on the top right corner, the region is selected as us-west-2**
 Click this link to view the details.
 
 Once you are on the detail page for the specific CodePipeline, you can see the status along with a links to the build details. If you click on the **details** link in the build/deploy stage, you can see the output from the CodeBuild process.
