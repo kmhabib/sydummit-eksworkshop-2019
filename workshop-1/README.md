@@ -87,7 +87,7 @@ You will be deploying infrastructure on AWS which will have an associated cost. 
     In the bottom panel of your new Cloud9 IDE, you will see a terminal command line terminal open and ready to use.  Run the following git command in the terminal to clone the necessary code to complete this tutorial:
 
     ```
-    $ git clone https://github.com/kmhabib/sydummit-eksworkshop-2019.git
+    git clone https://github.com/kmhabib/sydummit-eksworkshop-2019.git
     ```
 
     After cloning the repository, you'll see that your project explorer now includes the files cloned.
@@ -95,16 +95,16 @@ You will be deploying infrastructure on AWS which will have an associated cost. 
     In the terminal, change directory to the subdirectory for this workshop in the repo:
 
     ```
-    $ cd sydummit-eksworkshop-2019/workshop-1
+    cd sydummit-eksworkshop-2019/workshop-1
     ```
 
 5. Run some additional automated setup steps with the `setup` script:
 
     ```
-    $ script/setup
-    $ script/EKSPreReqs.sh
+    script/setup
+    script/EKSPreReqs.sh
     if the EKSPreReqs.sh or any script gives error, issue this command:
-    $ chmod +x script/* 
+    chmod +x script/* 
     ```
 
     This first script will delete some unneeded Docker images to free up disk space, populate a DynamoDB table with some seed data, upload site assets to S3, and install some Docker-related authentication mechanisms that will be discussed later. Make sure you see the "Success!" message when the script completes. The second script will install **kubectl**, **aws-iam-authenticator**, **eksctl** and **kubectx**
@@ -416,7 +416,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     </pre>
     </details>
 
-    If your Dockerfile looks good, rename your file from "Dockerfile.draft" to "Dockerfile" and continue to the next step.
+    If your Dockerfile looks good, rename your file from "Dockerfile.draft" to "Dockerfile" and continue to the next step. (If you opened a new terminal window while waiting for the EKS ckuster to start, you may need to `cd sydummit-eksworkshop-2019/workshop-1/app/monolith-service` to run this command.)
 
     <pre>
     $ mv Dockerfile.draft Dockerfile
@@ -523,7 +523,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
      ---> 6fd52da27f84
     </pre>
 
-    You now have a Docker image built.  The -t flag names the resulting container image.  List your docker images and you'll see the "monolith-service" image in the list. Here's a sample output, note the monolith image in the list:
+    You now have a Docker image built.  The -t flag names the resulting container image.  List your docker images using `docker image list`, and you'll see the "monolith-service" image in the list. Here's a sample output, note the monolith image in the list:
 
     <pre>
     $ docker images
@@ -647,8 +647,8 @@ aws ecr describe-repositories | jq '.repositories[1].repositoryUri'
 Tag and push your container image to the mono repository.
 
     
-    $ docker tag monolith-service:latest <ECR_REPOSITORY_URI>:latest
-    $ docker push <ECR_REPOSITORY_URI>:latest
+    docker tag monolith-service:latest <ECR_REPOSITORY_URI>:latest
+    docker push <ECR_REPOSITORY_URI>:latest
 
 When you issue the push command, Docker pushes the layers up to ECR.
 
